@@ -1,0 +1,58 @@
+{{extend '../admin/common/layout.art'}}
+
+{{block 'link'}}
+<link rel="stylesheet" href="/admin/css/article.css" />
+{{/block}}
+
+{{block 'main'}}
+<!-- nav -->
+{{include '../admin/common/headnav.art'}}
+<!-- /nav -->
+
+<!-- list of articles -->
+<ul class="list w1100">
+    {{each result}}
+    <!-- first piece -->
+    <li class="{{$index%2==0? 'fl':'fr'}}">
+
+        <a href=" /home/article-detail?id={{@$value.title}}" class="thumbnail"><img src="{{$value.cover}}"></a>
+
+        <div class="content">
+            <a href="/home/article-detail?id={{@$value.title}}" class="article-title">{{$value.title}}</a>
+
+            <div class="article-info">
+                <span class="author">{{$value.name}}</span>
+                <span>{{moment($value.pubdate).format('LL')}}</span>
+            </div>
+
+            <div class="brief">
+                {{@$value.content.replace(/<[^>]+>/g,'').substr(0,100)+'......'}}
+            </div>
+
+        </div>
+    </li>
+    {{/each }}
+    <!-- /first piece -->
+</ul>
+<!-- /list of articles -->
+
+<!-- pagings -->
+<div style="text-align: center;">
+    <ul class="pagination">
+        <li style="display: <%= page-1<1? 'none':'inline' %>">
+            <a href="/home/?page=<%=page-1%>">
+                <span>&laquo;</span>
+            </a>
+        </li>
+        <% for (var i=1; i <=total; i++) { %>
+            <li><a href="/home/?page=<%=i %>">{{i}}</a></li>
+            <% } %>
+                <li style="display: <%= page-0+1 > total ? 'none' : 'inline' %>">
+                    <a href="/home/?page=<%=page-0+1%>">
+                        <span>&raquo;</span>
+                    </a>
+                </li>
+    </ul>
+    <!-- /paging -->
+</div>
+{{/block}}

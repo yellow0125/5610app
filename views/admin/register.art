@@ -1,0 +1,55 @@
+{{extend './common/layout.art'}}
+
+{{block 'main'}}
+<!-- nav -->
+{{include './common/headnav.art'}}
+<!-- /nav -->
+
+<div class="login-body">
+    <div class="login-container">
+        <h4 class="title">Create Your Account</h4>
+        <div class="login">
+            <form action="/admin/register" method="post" id="registerForm">
+                <div class="form-group">
+                    <label >Username</label>
+                    <input name="name" type="text" class="form-control"
+                        placeholder="the number of characters is 2 to 12">
+                </div>
+                <div class="form-group">
+                    <label >Email Address</label>
+                    <input name="email" type="text" class="form-control" placeholder="email address">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input name="password" type="password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">CREATE</button>
+                <br><br><br>
+                <p class="tips" style="text-align: center; color: red;">{{message}}</p>
+            </form>
+        </div>
+        
+    </div>
+</div>
+{{/block}}
+
+{{block 'script'}}
+<script type="text/javascript">
+    $('#registerForm').on('submit', function () {
+        var result = serializeToJson($(this))
+        if (result.name.trim().length == 0) {
+            alert('Please enter a nickname');
+            return false;
+        }
+        if (result.email.trim().length == 0) {
+            alert('Please enter email address');
+            return false;
+        }
+        if (result.password.trim().length == 0) {
+            alert('Please enter the password')
+            return false;
+        }
+    });
+</script>
+
+{{/block}}

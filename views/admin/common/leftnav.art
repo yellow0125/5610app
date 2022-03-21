@@ -1,0 +1,20 @@
+<div class="aside fl">
+    <ul class="menu list-unstyled">
+        <li>
+            <span class="glyphicon glyphicon-user"></span>
+            Username<br>
+            <div style="color:wheat;">{{userInfo.name}}</div>
+        </li>
+        <li>
+            <span class="glyphicon glyphicon-envelope"></span>
+            Email address<br>
+            <div style="color:wheat;">{{userInfo.email}}</div>
+        </li>
+        <li>
+            <span class="glyphicon glyphicon-home"></span>
+            Register date <br>
+            <div style="color:wheat;">{{moment(userInfo.date).format('l')}}</div>
+            
+        </li>
+    </ul>
+</div>
