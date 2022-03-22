@@ -29,11 +29,11 @@ template.defaults.imports.moment = moment;
 app.use('/admin', require('./middleware/loginGuard'));
 app.use('/', require('./middleware/otherGuard.js'));
 
-if (process.env.NODE_ENV === 'development') {
-	console.log('development')
-} else {
-	console.log('production')
-}
+// if (process.env.NODE_ENV === 'development') {
+// 	console.log('development')
+// } else {
+// 	console.log('production')
+// }
 
 //link to routes
 const home = require('./routes/home')
