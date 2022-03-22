@@ -1,8 +1,6 @@
 const mongodb = require("mongodb")
 
 const MongoClient = mongodb.MongoClient
-const MONGODB_URI =
-  "mongodb+srv://yellow:125512@cs5610.kgnh2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 require('dotenv').config()
 const uri = process.env.authURI||MONGODB_URI
 
