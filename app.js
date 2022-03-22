@@ -54,6 +54,6 @@ app.use((err, req, res, next) => {
 	res.redirect(`${result.path}?${params.join('&')}`);
 })
 
-db.dbConnect().then(() => app.listen(3000, () => {
+db.dbConnect().then(() => app.listen(process.env.PORT||3000, () => {
 	console.log('server is running on port 3000')
 }))
